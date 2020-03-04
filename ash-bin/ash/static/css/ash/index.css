@@ -1,0 +1,15 @@
+p{color: #3c763d;}
+.left{
+    background: #ce8483;
+    float: left;
+    width: 70%;
+    margin:0 0 20px 0;
+    height:400px;
+}
+.right{
+    background: #e6e6e6;
+    float: right;
+    width: 30%;
+    margin:0 0 20px 0;
+    height:400px;
+}

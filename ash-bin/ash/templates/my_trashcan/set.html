@@ -1,0 +1,21 @@
+{% extends 'my_trashcan/base.html' %}
+{% load static %}
+<!--标题-->
+{% block title %} 设置 {% endblock %}
+
+<!--css和js部分-->
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css'%}">
+	<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js'%}"></script>
+	<script src="{% static 'js\jquery-3.4.1\jquery-3.4.1.min.js' %}"></script>
+	<link rel=" stylesheet" type="text/css" href="{% static 'css\ash\set.css' %}">
+
+{% endblock %}
+
+<!--body部分-->
+{% block body %}
+<p>我是设置</p>
+<h3>这是设置</h3>
+
+{% endblock %}

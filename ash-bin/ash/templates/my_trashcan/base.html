@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}全局{% endblock %}</title>
+
+    {% block css %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css'%}">
+	<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js'%}"></script>
+	<script src="{% static 'js\jquery-3.4.1\jquery-3.4.1.min.js' %}"></script>
+    <link rel=" stylesheet" type="text/css" href="{% static 'css\ash\base.css' %}">
+
+    {% endblock %}
+</head>
+<body style="background: #3875d7">
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">回收机</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'getIndex' %}">垃圾桶</a></li>
+            <li><a href="{% url 'getAsh' %}">丢垃圾</a></li>
+            <!--<li><a href="{% url 'getSet' %}">设置</a></li>-->
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if request.session.is_login %}
+                <li><a href="#">你好！{{ request.session.user_name }}</a></li>
+                <li><a href="{% url 'exitLogin' %}">退出</a></li>
+            {% else %}
+                <li><a href="{% url 'getRegister' %}"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="{% url 'getLogin' %}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+            {% endif %}
+        </ul>
+    </div>
+	</div>
+</nav>
+
+{% block body %} {% endblock %}
+<div class="panel-footer" >
+    <ul class="list-inline">
+        <li>友情链接：</li>
+        <li><a href="https://www.baidu.com/"> 百度</a></li>
+        <li><a href="https://www.taobao.com/"> 淘宝</a></li>
+        <li><a href="https://news.qq.com/"> 腾讯新闻</a></li>
+        <li><a href="https://fanyi.baidu.com/">百度翻译</a></li>
+        <li><a href="https://www.51zxw.net/">自学网</a></li>
+        <li><a href="https://www.runoob.com/">菜鸟教程</a></li>
+        <li><a href="https://www.w3school.com.cn/">w3school</a></li>
+    </ul>
+</div>
+</body>
+</html>

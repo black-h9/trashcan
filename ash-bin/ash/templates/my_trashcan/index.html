@@ -1,0 +1,48 @@
+{% extends 'my_trashcan/base.html' %}
+{% load static %}
+<!--标题-->
+{% block title %} 首页 {% endblock %}
+
+<!--css和js部分-->
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css'%}">
+	<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js'%}"></script>
+	<script src="{% static 'js\jquery-3.4.1\jquery-3.4.1.min.js' %}"></script>
+	<link rel=" stylesheet" type="text/css" href="{% static 'css\ash\index.css' %}">
+	<link rel=" stylesheet" type="text/css" href="{% static 'css\ash\index.css' %}">
+{% endblock %}
+
+<!--body部分-->
+{% block body %}
+
+<!--提示用户是否登陆-->
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {% if request.session.is_login %}
+    		<h4>{{ request.session.user_name }},欢迎来到回收机！</h4>
+    	{% else %}
+    		<h4>你尚未登录，只能访问公开内容！</h4>
+    	{% endif %}
+
+    </div>
+    <div class="left">
+        <ul class="list-unstyled">
+			{% for ash in ash_all %}
+				<li>作者：{{ ash.author }}&nbsp&nbsp标题：{{ ash.title }}<br>{{ ash.body }}{{ ash.created_time }}</li><br>
+			{% endfor %}
+		</ul>
+    </div>
+	<div class="right">
+			<p>个性签名：</p>
+
+    		<h4>{{ personalized }}</h4>
+
+
+	</div>
+</div>
+
+<!--<script type="text/javascript" src="{% static 'js\ash\index.js' %}"></script>-->
+{% endblock %}

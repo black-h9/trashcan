@@ -1,0 +1,53 @@
+{% extends 'my_trashcan/base.html' %}
+{% load static %}
+<!--标题-->
+{% block title %} 登陆 {% endblock %}
+
+<!--css和js部分-->
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css'%}">
+	<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js'%}"></script>
+	<script src="{% static 'js\jquery-3.4.1\jquery-3.4.1.min.js' %}"></script>
+	<link rel=" stylesheet" type="text/css" href="{% static 'css\ash\login.css' %}">
+
+{% endblock %}
+
+<!--body部分-->
+{% block body %}
+
+<div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-login' action="/ash/getLogin" method="post">
+
+              {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              {% csrf_token %}
+              <h2 class="text-center">欢迎用户登录</h2>
+              <div class="form-group">
+                  {{ Login_log.username.label_tag }}
+                  {{ Login_log.username}}
+              </div>
+              <div class="form-group">
+                  {{ Login_log.password.label_tag }}
+                  {{ Login_log.password }}
+              </div>
+
+              <div class="form-group">
+                  {{ Login_log.captcha.errors }}
+                  {{ Login_log.captcha.label_tag }}
+                  {{ Login_log.captcha }}
+              </div>
+
+
+              <button type="reset" class="btn btn-default pull-left">重置</button>
+              <button type="submit" class="btn btn-primary pull-right">登录</button>
+			  <span><a href="/ash/getRegister" class="text-success " ><ins>新用户注册</ins></a></span>
+
+          </form>
+        </div>
+    </div>
+
+
+{% endblock %}
